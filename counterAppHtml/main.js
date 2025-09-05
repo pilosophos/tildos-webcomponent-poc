@@ -1,5 +1,3 @@
-console.log(document.querySelectorAll('*'))
-
 const counter = document.getElementById('counter');
 const button = document.getElementById('button');
 

@@ -11,15 +11,24 @@
   >
 </head>
 <body style="background-color: skyblue; height: 100vh; width: 100vw; margin: 0;">
-  <tildos-window>
-    <tildos-html-webapp
-      slot="content"
-      data-entrypoint="counterAppHtml/main.html"
-      data-script-src="counterAppHtml/main.js"
-      data-title="Counter (using partial HTML)"
-    />
-  </tildos-window>
+  <tildos-html-webapp
+    slot="content"
+    data-entrypoint="counterAppHtml/main.html"
+    data-script-src="counterAppHtml/main.js"
+    data-title="Counter (using partial HTML)"
+  />
 
+  <template id="tildos__window-template">
+    <article class="window">
+      <div class="title-bar">
+        <span class="title-bar-text">Title</span>
+        <div class="title-bar-controls">
+          <button aria-label="Close" class="tildeos__close"></button>
+        </div>
+      </div>
+      <div class="window-body"></div>
+    </article>
+  </template>
   <script src="tildos-window.js"></script>
   <script src="tildos-html-webapp.js"></script>
 </body>

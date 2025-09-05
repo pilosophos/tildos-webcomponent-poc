@@ -1,17 +1,19 @@
-class TildosHtmlWebapp extends HTMLElement {
+class TildosHtmlWebapp extends TildosWindow {
   constructor() {
     super();
   }
 
   async connectedCallback() {
+    super.connectedCallback();
+    super.setTitle(this.dataset.title);
+
     // It might be a good idea to cache the templates of each webapp
     // in some global registry, so if the user opens the same webapp twice,
     // so Tildos doesn't have to fetch and parse it again
     const templateContent = await this.getTemplateContent();
 
     const cloned = templateContent.cloneNode(true);
-    this.parentElement.querySelector('.window-body').appendChild(cloned);
-    this.parentElement.querySelector('.title-bar-text').textContent = this.dataset.title;
+    super.setBody(cloned);
 
     const script = document.createElement('script');
     script.src = this.dataset.scriptSrc;

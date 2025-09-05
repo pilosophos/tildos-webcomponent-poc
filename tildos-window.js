@@ -8,24 +8,24 @@ class TildosWindow extends HTMLElement {
   }
 
   async connectedCallback() {
-    const templateContent = await this.getTemplateContent();
+    const templateContent = document.getElementById('tildos__window-template').content;
 
     const cloned = templateContent.cloneNode(true);
     this.prepend(cloned);
 
-    const titlebar = this.querySelector('.tildos__titlebar');
+    const titlebar = this.querySelector('.title-bar');
     titlebar.addEventListener('mousedown', beginEvent => this.beginDrag(beginEvent));
 
     const close = this.querySelector('.tildeos__close');
     close.addEventListener('mousedown', e => e.stopPropagation());
   }
 
-  async getTemplateContent() {
-    const html = await fetch('tildos-window.html')
-      .then(res => res.text())
-      .then(htmlText => new DOMParser().parseFromString(htmlText, 'text/html'))
-      .catch(err => console.error("Failed to fetch and parse the TildeosWindow template!", err));
-    return html.querySelector('template').content;
+  setTitle(title) {
+    this.querySelector('.title-bar-text').textContent = title;
+  }
+
+  setBody(body) {
+    this.querySelector('.window-body').append(body);
   }
 
   /**
