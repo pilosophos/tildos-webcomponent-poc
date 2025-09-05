@@ -4,4 +4,5 @@
 
 .tildos__titlebar {
     user-select: none;
+    cursor: pointer;
 }

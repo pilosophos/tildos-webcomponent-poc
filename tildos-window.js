@@ -66,6 +66,14 @@ class TildosWindow extends HTMLElement {
     document.removeEventListener('mousemove', this.dragListener);
     this.dragListener = null;
   }
+
+  async getTemplateContent(src) {
+    const html = await fetch(src)
+      .then(res => res.text())
+      .then(htmlText => new DOMParser().parseFromString(htmlText, 'text/html'))
+      .catch(err => console.error("Failed to fetch and parse content of CounterAppWebComponent!", err));
+    return html.querySelector('template').content.cloneNode(true);
+  }
 }
 
 window.customElements.define('tildos-window', TildosWindow);
