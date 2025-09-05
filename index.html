@@ -16,7 +16,14 @@
     data-entrypoint="counterAppHtml/main.html"
     data-script-src="counterAppHtml/main.js"
     data-title="Counter (using partial HTML)"
-  />
+  ></tildos-html-webapp>
+
+  <tildos-iframe-webapp
+    slot="content"
+    data-src="counterAppIframe/main.html"
+    data-title="Counter (using iframe)"
+    style="left: 50px; top: 50px;"
+  ></tildos-iframe-webapp>
 
   <template id="tildos__window-template">
     <article class="window">
@@ -31,5 +38,6 @@
   </template>
   <script src="tildos-window.js"></script>
   <script src="tildos-html-webapp.js"></script>
+  <script src="tildos-iframe-webapp.js"></script>
 </body>
 </html>

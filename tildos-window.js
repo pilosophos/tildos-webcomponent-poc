@@ -11,7 +11,8 @@ class TildosWindow extends HTMLElement {
     const templateContent = document.getElementById('tildos__window-template').content;
 
     const cloned = templateContent.cloneNode(true);
-    this.prepend(cloned);
+    this.appendChild(cloned);
+    this.classList.add('tildos-window')
 
     const titlebar = this.querySelector('.title-bar');
     titlebar.addEventListener('mousedown', beginEvent => this.beginDrag(beginEvent));
