@@ -1,0 +1,7 @@
+tildos-window {
+    position: absolute;
+}
+
+.tildos__titlebar {
+    user-select: none;
+}
