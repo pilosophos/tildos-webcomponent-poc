@@ -7,11 +7,16 @@ class TildosHtmlWebapp extends TildosWindow {
     super.connectedCallback();
     super.setTitle(this.dataset.title);
 
+    const root = document.createElement('div');
+    root.id = window.crypto.randomUUID();
     const template = await this.getTemplateContent(this.dataset.entrypoint);
-    super.setBody(template);
+    root.appendChild(template);
+
+    super.setBody(root);
 
     const script = document.createElement('script');
     script.src = this.dataset.scriptSrc;
+    script.dataset.rootId = root.id;
     this.appendChild(script);
   }
 }
