@@ -2,7 +2,7 @@
     position: absolute;
 }
 
-.tildos__titlebar {
+.title-bar {
     user-select: none;
-    cursor: pointer;
+    cursor: default;
 }
