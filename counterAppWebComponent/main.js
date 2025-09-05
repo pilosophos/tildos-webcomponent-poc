@@ -3,17 +3,26 @@ class CounterAppWebComponent extends TildosWindow {
     super();
   }
 
+  /**
+   * Initializes the web component when it's added to the page
+   */
   async connectedCallback() {
     super.connectedCallback();
-    super.setTitle('Counter App (pure web component)');
 
+    // IMPORTANT: This HTML file should point to your webapp's template
     const template = await super.getTemplateContent('counterAppWebComponent/main.html');
     super.setBody(template);
 
-    this.initWebapp(this.querySelector('.window-body'));
+    this.main(this.querySelector('.window-body'));
   }
 
-  initWebapp(root) {
+  /**
+   * main() is where your webapp's main business logic goes
+   * @param {HTMLElement} root The div where your webapp is rendered to
+   */
+  main(root) {
+    super.setTitle('Counter App (pure web component)');
+
     const counter = root.querySelector('.counter');
     const button = root.querySelector('.button');
     
